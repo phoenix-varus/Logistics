@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<constant name="struts.devMode" value="true" />
+	<!-- 这一句主要功能在修改代码后是不需要重启tomcat -->
+	<package name="actions" namespace="/actions" extends="struts-default">
+		<action name="*"
+			class="main.java.cn.com.sxu.logistics.controller.ManagerController"
+			method="{1}">
+			<result name="success">
+				/{1}.jsp
+			</result>
+			<result name="error">
+				/error.jsp
+			</result>
+			<result name="NOTASKERROR">
+				/noTask.jsp
+			</result>
+			<result name="NODELIVERERROR">
+				/noDeliver.jsp
+			</result>
+			<result name="NOMODIFYTASK">
+				/noModifyTask.jsp
+			</result>
+			<result name="ADDTASKSUCCESS" type="redirectAction">
+				/actions/showTaskFormList
+			</result>
+			<result name="DISTRIBUTETASKSUCCESS" type="redirectAction">
+				/actions/showTaskFormList
+			</result>
+			<result name="MODIFYREACTIONSUCCESS" type="redirectAction">
+				/actions/showReactionList
+			</result>
+			<result name="MODIFYTASKSUCCESS" type="redirectAction">
+				/actions/showTaskFormList
+			</result>
+			<result name="NODATAS" type="redirectAction">
+				/actions/noDatas
+			</result>
+			<result name="PRINTINVOICESUCCESS" type="redirectAction">
+				/actions/showInvoiceList
+			</result>
+			<result name="ERRORDATES" type="redirectAction">
+				/actions/showPaymentList
+			</result>
+		</action>
+	</package>
+
+</struts>
